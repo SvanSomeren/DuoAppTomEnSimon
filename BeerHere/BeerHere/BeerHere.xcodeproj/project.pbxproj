@@ -12,6 +12,7 @@
 		83492ECD2064EF530054FC8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83492ECB2064EF530054FC8F /* Main.storyboard */; };
 		83492ECF2064EF530054FC8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83492ECE2064EF530054FC8F /* Assets.xcassets */; };
 		83492ED22064EF530054FC8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83492ED02064EF530054FC8F /* LaunchScreen.storyboard */; };
+		83492EDC206504540054FC8F /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83492EDB206504540054FC8F /* Bar.swift */; };
 		F5A6E83F2064F0C50003BF23 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A6E83E2064F0C50003BF23 /* MapKit.framework */; };
 		F5A6E8412064F75E0003BF23 /* searchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A6E8402064F75E0003BF23 /* searchViewController.swift */; };
 		F5A6E8432064F7720003BF23 /* mapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A6E8422064F7720003BF23 /* mapViewController.swift */; };
@@ -26,6 +27,7 @@
 		83492ECE2064EF530054FC8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		83492ED12064EF530054FC8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83492ED32064EF530054FC8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83492EDB206504540054FC8F /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
 		F5A6E83E2064F0C50003BF23 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F5A6E8402064F75E0003BF23 /* searchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchViewController.swift; sourceTree = "<group>"; };
 		F5A6E8422064F7720003BF23 /* mapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				83492ECB2064EF530054FC8F /* Main.storyboard */,
 				F5A6E8442064F7860003BF23 /* infoViewController.swift */,
 				F5A6E8422064F7720003BF23 /* mapViewController.swift */,
+				83492EDB206504540054FC8F /* Bar.swift */,
 				F5A6E8402064F75E0003BF23 /* searchViewController.swift */,
 				83492ECE2064EF530054FC8F /* Assets.xcassets */,
 				83492ED02064EF530054FC8F /* LaunchScreen.storyboard */,
@@ -163,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83492ECA2064EF530054FC8F /* ViewController.swift in Sources */,
+				83492EDC206504540054FC8F /* Bar.swift in Sources */,
 				83492EC82064EF530054FC8F /* AppDelegate.swift in Sources */,
 				F5A6E8452064F7860003BF23 /* infoViewController.swift in Sources */,
 				F5A6E8412064F75E0003BF23 /* searchViewController.swift in Sources */,
