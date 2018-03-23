@@ -1,26 +1,8 @@
-[
-   {
-      "name":"O’Shea’s Irish Pub",
-      "lat":"51.4378676",
-      "long":"5.4790517",
-      "openingstime":"13:00",
-      "closingtime":"2:00",
-      "popularbeer":"Guinness"
-   },
-   {
-      "name":"Drinkers Pub",
-      "lat":"51.4378706",
-      "long":"5.491203",
-      "openingstime":"13:00",
-      "closingtime":"1:00",
-      "popularbeer":"Hertog Jan Grand Prestige"
-   },
-   {
-      "name":"kafee Aloys",
-      "lat":"51.4377385",
-      "long":"5.4793739",
-      "openingstime":"15:00",
-      "closingtime":"2:00",
-      "popularbeer":"Leffe Tripel"
-   }
-]
+{
+	"name":"OSheas Irish Pub",
+	"lat":"51.4378676",
+      	"long":"5.4790517",
+      	"openingstime":"13:00",
+      	"closingtime":"2:00",
+      	"popularbeer":"Guinness"
+}
