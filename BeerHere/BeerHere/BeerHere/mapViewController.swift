@@ -11,7 +11,6 @@ import UIKit
 import MapKit
 
 class mapViewController: UIViewController, CLLocationManagerDelegate {
-    let annotation = MKPointAnnotation()
     let annotationCircle = MKCircle();
     let locationManager = CLLocationManager()
     var bars = [Bar]();
@@ -23,9 +22,7 @@ class mapViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        //loadJsonData();
-        annotation.coordinate = CLLocationCoordinate2D(latitude: 53.02032, longitude: 5.324324)
-        mapView.addAnnotation(annotation)
+        loadJsonData();
         // Do any additional setup after loading the view.
     }
 
@@ -34,6 +31,7 @@ class mapViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    //annotation onclick
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation { return nil }
         
@@ -54,8 +52,7 @@ class mapViewController: UIViewController, CLLocationManagerDelegate {
     
     func loadJsonData()
     {
-        let url = NSURL(string: "https://i341618.iris.fhict.nl/json/bars.json")
-        print("set request link")
+        let url = NSURL(string: "https://i360089.venus.fhict.nl/barren.json")
         let request = NSURLRequest(url: url! as URL)
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
@@ -116,6 +113,7 @@ class mapViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
         for bar in bars{
+            let annotation = MKPointAnnotation();
             annotation.coordinate = CLLocationCoordinate2D(latitude: bar.lat!, longitude: bar.long!)
             mapView.addAnnotation(annotation)
         }
