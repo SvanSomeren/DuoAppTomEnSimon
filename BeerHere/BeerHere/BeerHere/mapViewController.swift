@@ -14,11 +14,31 @@ class mapViewController: UIViewController, CLLocationManagerDelegate {
     let annotationCircle = MKCircle();
     let locationManager = CLLocationManager()
     var bars = [Bar]();
+    var locationSearchTable: LocationSearchTable? = nil
+    
+    var resultSearchController:UISearchController? = nil
     
     @IBOutlet var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
+        resultSearchController = UISearchController(searchResultsController: locationSearchTable)
+        resultSearchController?.searchResultsUpdater = locationSearchTable
+        
+        let searchBar = resultSearchController!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Search Bars or Beers"
+        navigationItem.titleView = resultSearchController?.searchBar
+        
+        resultSearchController?.hidesNavigationBarDuringPresentation = false
+        resultSearchController?.dimsBackgroundDuringPresentation = true
+        definesPresentationContext = true
+        
+        locationSearchTable?.mapView = mapView
+        locationSearchTable?.search = searchBar
+        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -111,15 +131,18 @@ class mapViewController: UIViewController, CLLocationManagerDelegate {
                 print(newBar.name!);
                 bars.append(newBar);
             }
+            locationSearchTable?.bars = bars;
         }
         for bar in bars{
             let annotation = MKPointAnnotation();
             annotation.coordinate = CLLocationCoordinate2D(latitude: bar.lat!, longitude: bar.long!)
+            annotation.title = bar.name!
             mapView.addAnnotation(annotation)
         }
+        
+        
     }
-
-
+    
     /*
     // MARK: - Navigation
 
@@ -131,3 +154,4 @@ class mapViewController: UIViewController, CLLocationManagerDelegate {
     */
 
 }
+

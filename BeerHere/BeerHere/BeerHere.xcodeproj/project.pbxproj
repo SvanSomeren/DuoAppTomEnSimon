@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83041772206CE41B009EE2EC /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83041771206CE41B009EE2EC /* LocationSearchTable.swift */; };
 		83492EC82064EF530054FC8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83492EC72064EF530054FC8F /* AppDelegate.swift */; };
 		83492ECA2064EF530054FC8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83492EC92064EF530054FC8F /* ViewController.swift */; };
 		83492ECD2064EF530054FC8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83492ECB2064EF530054FC8F /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		83041771206CE41B009EE2EC /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
 		83492EC42064EF530054FC8F /* BeerHere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerHere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83492EC72064EF530054FC8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83492EC92064EF530054FC8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				83492ECE2064EF530054FC8F /* Assets.xcassets */,
 				83492ED02064EF530054FC8F /* LaunchScreen.storyboard */,
 				83492ED32064EF530054FC8F /* Info.plist */,
+				83041771206CE41B009EE2EC /* LocationSearchTable.swift */,
 			);
 			path = BeerHere;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83041772206CE41B009EE2EC /* LocationSearchTable.swift in Sources */,
 				83492ECA2064EF530054FC8F /* ViewController.swift in Sources */,
 				83492EDC206504540054FC8F /* Bar.swift in Sources */,
 				83492EC82064EF530054FC8F /* AppDelegate.swift in Sources */,
