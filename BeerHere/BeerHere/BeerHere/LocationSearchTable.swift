@@ -14,15 +14,26 @@ class LocationSearchTable : UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        print(resultBars.count)
         return resultBars.count;
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let textstuff = resultBars[indexPath.row];
-        cell.textLabel?.text = textstuff.name;
-        return cell
+        let bar = resultBars[indexPath.row];
+        cell.textLabel?.text = bar.name;
+        cell.detailTextLabel?.text = bar.popularBeer;
+        return cell;
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedBar = resultBars[indexPath.row]
+        search?.text = selectedBar.name;
+        dismiss(animated: true, completion: nil);
+        print(selectedBar.name!);
+        let annotation = MKPointAnnotation();
+        annotation.coordinate = CLLocationCoordinate2D(latitude: selectedBar.lat!, longitude: selectedBar.long!);
+        annotation.title = selectedBar.name;
+        mapView?.addAnnotation(annotation);
     }
 }
 
@@ -62,13 +73,6 @@ extension LocationSearchTable : UISearchResultsUpdating {
 //                annotation.coordinate = CLLocationCoordinate2D(latitude: bar.lat!, longitude: bar.long!)
 //                mapView?.addAnnotation(annotation)
 //            }
-            
-            //code hieronder in een tableview override voor selecteditem gooien?
-            let annotation = MKPointAnnotation();
-            let selectedBar = resultBars[(tableView.indexPathForSelectedRow?.row)!]
-            annotation.coordinate = CLLocationCoordinate2D(latitude: selectedBar.lat!, longitude: selectedBar.long!)
-            mapView?.addAnnotation(annotation)
-            dismiss(animated: true, completion: nil)
         }
         
     }

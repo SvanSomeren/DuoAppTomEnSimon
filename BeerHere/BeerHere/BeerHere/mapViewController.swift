@@ -69,6 +69,10 @@ class mapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        print("dab on em")
+        
+    }
     
     func loadJsonData()
     {
