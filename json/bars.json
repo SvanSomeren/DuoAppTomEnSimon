@@ -5,7 +5,9 @@
       "long":"5.4790517",
       "openingstime":"13:00",
       "closingtime":"2:00",
-      "popularbeer":"Guinness"
+      "popularbeer":"Guinness",
+      "Price":"€3,80",
+      ""
    },
    {
       "name":"Drinkers Pub",
