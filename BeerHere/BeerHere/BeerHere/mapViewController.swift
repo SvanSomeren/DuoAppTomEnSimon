@@ -51,24 +51,6 @@ class mapViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    //annotation onclick
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation { return nil }
-        
-        if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "") {
-            annotationView.annotation = annotation
-            return annotationView
-        } else {
-            let annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:"")
-            annotationView.isEnabled = true
-            annotationView.canShowCallout = true
-            
-            let btn = UIButton(type: .detailDisclosure)
-            annotationView.rightCalloutAccessoryView = btn
-            return annotationView
-        }
-    }
-    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         print("dab on em")
         
