@@ -10,7 +10,7 @@ import CoreLocation
 import UIKit
 import MapKit
 
-class mapViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDelegate {
+class mapViewController: UIViewController,/*MKMapViewDelegate,*/ CLLocationManagerDelegate {
     let annotationCircle = MKCircle();
     let locationManager = CLLocationManager()
     var bars = [Bar]();
@@ -24,7 +24,7 @@ class mapViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
+        locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as? LocationSearchTable
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
         resultSearchController?.searchResultsUpdater = locationSearchTable
         
@@ -37,10 +37,10 @@ class mapViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDe
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
         
-        self.mapView.delegate = self
-        
         locationSearchTable?.mapView = mapView
         locationSearchTable?.search = searchBar
+        
+        //self.mapView.delegate = self
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -86,6 +86,7 @@ class mapViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDe
                 }
             }
         }
+        performSegue(withIdentifier: "infoSegue", sender: nil)
     }
     
     func loadJsonData()
@@ -161,10 +162,10 @@ class mapViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDe
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let DestScreen : infoViewController = segue.destination as! infoViewController
-        DestScreen.name = selectedBar.name;
-        DestScreen.beer = selectedBar.popularBeer;
-        DestScreen.opentime = selectedBar.openingTime;
-        DestScreen.closetime = selectedBar.openingTime;
+        DestScreen.name = selectedBar.name!;
+        DestScreen.beer = selectedBar.popularBeer!;
+        DestScreen.opentime = selectedBar.openingTime!;
+        DestScreen.closetime = selectedBar.closingTime!;
     }
     
     /*

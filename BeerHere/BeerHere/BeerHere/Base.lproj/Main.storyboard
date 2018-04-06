@@ -72,7 +72,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="aAv-Jc-QV4" id="GG4-Aw-tub"/>
-                        <segue destination="SER-lb-S9h" kind="show" id="uXp-kk-Iog"/>
+                        <segue destination="SER-lb-S9h" kind="show" identifier="infoSegue" id="uXp-kk-Iog"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -82,7 +82,7 @@
         <!--Info View Controller-->
         <scene sceneID="92K-NR-ZX5">
             <objects>
-                <viewController id="SER-lb-S9h" customClass="infoViewController" customModule="BeerHere" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="infoView" id="SER-lb-S9h" customClass="infoViewController" customModule="BeerHere" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SMx-O0-e2m">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
