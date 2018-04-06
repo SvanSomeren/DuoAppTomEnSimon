@@ -10,10 +10,11 @@ import CoreLocation
 import UIKit
 import MapKit
 
-class mapViewController: UIViewController, CLLocationManagerDelegate {
+class mapViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDelegate {
     let annotationCircle = MKCircle();
     let locationManager = CLLocationManager()
     var bars = [Bar]();
+    var selectedBar = Bar();
     var locationSearchTable: LocationSearchTable? = nil
     
     var resultSearchController:UISearchController? = nil
@@ -36,6 +37,8 @@ class mapViewController: UIViewController, CLLocationManagerDelegate {
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
         
+        self.mapView.delegate = self
+        
         locationSearchTable?.mapView = mapView
         locationSearchTable?.search = searchBar
         
@@ -51,27 +54,38 @@ class mapViewController: UIViewController, CLLocationManagerDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    //annotation onclick
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation { return nil }
-        
-        if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "") {
-            annotationView.annotation = annotation
-            return annotationView
-        } else {
-            let annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:"")
-            annotationView.isEnabled = true
-            annotationView.canShowCallout = true
-            
-            let btn = UIButton(type: .detailDisclosure)
-            annotationView.rightCalloutAccessoryView = btn
-            return annotationView
-        }
-    }
+    //annotation onclick NOT WORKING
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        if annotation is MKUserLocation { return nil }
+//
+//        if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotation") {
+//            annotationView.annotation = annotation
+//            print(" yeet" )
+//            return annotationView
+//        } else {
+//            let annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:"annotation")
+//            print(" yeet again i guess")
+//            annotationView.isEnabled = true
+//            annotationView.canShowCallout = true
+//
+//            let btn = UIButton(type: .detailDisclosure)
+//            annotationView.rightCalloutAccessoryView = btn
+//            return annotationView
+//        }
+//    }
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        print("dab on em")
-        
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
+    {
+        if let annotationTitle = view.annotation?.title
+        {
+            for bar in bars
+            {
+                if bar.name == (view.annotation?.title)!
+                {
+                    selectedBar = bar;
+                }
+            }
+        }
     }
     
     func loadJsonData()
@@ -143,8 +157,14 @@ class mapViewController: UIViewController, CLLocationManagerDelegate {
             annotation.title = bar.name!
             mapView.addAnnotation(annotation)
         }
-        
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let DestScreen : infoViewController = segue.destination as! infoViewController
+        DestScreen.name = selectedBar.name;
+        DestScreen.beer = selectedBar.popularBeer;
+        DestScreen.opentime = selectedBar.openingTime;
+        DestScreen.closetime = selectedBar.openingTime;
     }
     
     /*
