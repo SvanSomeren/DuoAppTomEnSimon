@@ -14,6 +14,7 @@
 		83492ECF2064EF530054FC8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83492ECE2064EF530054FC8F /* Assets.xcassets */; };
 		83492ED22064EF530054FC8F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83492ED02064EF530054FC8F /* LaunchScreen.storyboard */; };
 		83492EDC206504540054FC8F /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83492EDB206504540054FC8F /* Bar.swift */; };
+		F55D852520776AD5006C1F8E /* Images in Resources */ = {isa = PBXBuildFile; fileRef = F55D852420776AD5006C1F8E /* Images */; };
 		F5A6E83F2064F0C50003BF23 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A6E83E2064F0C50003BF23 /* MapKit.framework */; };
 		F5A6E8412064F75E0003BF23 /* searchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A6E8402064F75E0003BF23 /* searchViewController.swift */; };
 		F5A6E8432064F7720003BF23 /* mapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A6E8422064F7720003BF23 /* mapViewController.swift */; };
@@ -30,6 +31,7 @@
 		83492ED12064EF530054FC8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		83492ED32064EF530054FC8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83492EDB206504540054FC8F /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
+		F55D852420776AD5006C1F8E /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		F5A6E83E2064F0C50003BF23 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F5A6E8402064F75E0003BF23 /* searchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchViewController.swift; sourceTree = "<group>"; };
 		F5A6E8422064F7720003BF23 /* mapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		83492EC62064EF530054FC8F /* BeerHere */ = {
 			isa = PBXGroup;
 			children = (
+				F55D852420776AD5006C1F8E /* Images */,
 				83492EC72064EF530054FC8F /* AppDelegate.swift */,
 				83492EC92064EF530054FC8F /* ViewController.swift */,
 				83492ECB2064EF530054FC8F /* Main.storyboard */,
@@ -155,6 +158,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F55D852520776AD5006C1F8E /* Images in Resources */,
 				83492ED22064EF530054FC8F /* LaunchScreen.storyboard in Resources */,
 				83492ECF2064EF530054FC8F /* Assets.xcassets in Resources */,
 				83492ECD2064EF530054FC8F /* Main.storyboard in Resources */,
