@@ -12,6 +12,7 @@ import MapKit
 
 class mapViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDelegate {
     let annotationCircle = MKCircle();
+    let userLocation = MKUserLocation();
     let locationManager = CLLocationManager()
     var bars = [Bar]();
     var selectedBar = Bar();
@@ -41,12 +42,23 @@ class mapViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDe
         locationSearchTable?.search = searchBar
         
         self.mapView.delegate = self
+        self.mapView.showsUserLocation = true;
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
         loadJsonData();
-        // Do any additional setup after loading the view.
+    }
+    
+    //user position
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        let location = locations.last as! CLLocation
+        print(" location updated ");
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        self.mapView.setRegion(region, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
