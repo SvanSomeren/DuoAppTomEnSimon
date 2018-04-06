@@ -41,7 +41,7 @@ extension LocationSearchTable : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         //look for text in the api call, then show markers for the ones where the search = api result
         resultBars.removeAll();
-        let stringValue = search?.text
+        let stringValue = search?.text;
         for bar in bars!{
             if bar.name?.lowercased().range(of: stringValue!.lowercased()) != nil
             {
@@ -53,27 +53,17 @@ extension LocationSearchTable : UISearchResultsUpdating {
             }
         }
         self.tableView.reloadData();
-        let allAnnotations = mapView?.annotations
-        mapView?.removeAnnotations(allAnnotations!)
+        let allAnnotations = mapView?.annotations;
+        mapView?.removeAnnotations(allAnnotations!);
         if resultBars.isEmpty
         {
             for bar in bars!
             {
                 let annotation = MKPointAnnotation();
-                annotation.coordinate = CLLocationCoordinate2D(latitude: bar.lat!, longitude: bar.long!)
-                mapView?.addAnnotation(annotation)
+                annotation.coordinate = CLLocationCoordinate2D(latitude: bar.lat!, longitude: bar.long!);
+                annotation.title = bar.name;
+                mapView?.addAnnotation(annotation);
             }
         }
-        else{
-            //misschien onderstaande code in selecteditem van tableview gooien
-//            for bar in resultBars
-//            {
-//                print("L")
-//                let annotation = MKPointAnnotation();
-//                annotation.coordinate = CLLocationCoordinate2D(latitude: bar.lat!, longitude: bar.long!)
-//                mapView?.addAnnotation(annotation)
-//            }
-        }
-        
     }
 }

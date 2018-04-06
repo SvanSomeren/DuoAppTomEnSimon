@@ -10,7 +10,7 @@ import CoreLocation
 import UIKit
 import MapKit
 
-class mapViewController: UIViewController,/*MKMapViewDelegate,*/ CLLocationManagerDelegate {
+class mapViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDelegate {
     let annotationCircle = MKCircle();
     let locationManager = CLLocationManager()
     var bars = [Bar]();
@@ -24,7 +24,7 @@ class mapViewController: UIViewController,/*MKMapViewDelegate,*/ CLLocationManag
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as? LocationSearchTable
+        locationSearchTable = storyboard!.instantiateViewController(withIdentifier: "LocationSearchTable") as! LocationSearchTable
         resultSearchController = UISearchController(searchResultsController: locationSearchTable)
         resultSearchController?.searchResultsUpdater = locationSearchTable
         
@@ -40,7 +40,7 @@ class mapViewController: UIViewController,/*MKMapViewDelegate,*/ CLLocationManag
         locationSearchTable?.mapView = mapView
         locationSearchTable?.search = searchBar
         
-        //self.mapView.delegate = self
+        self.mapView.delegate = self
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -53,26 +53,6 @@ class mapViewController: UIViewController,/*MKMapViewDelegate,*/ CLLocationManag
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    //annotation onclick NOT WORKING
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        if annotation is MKUserLocation { return nil }
-//
-//        if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotation") {
-//            annotationView.annotation = annotation
-//            print(" yeet" )
-//            return annotationView
-//        } else {
-//            let annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:"annotation")
-//            print(" yeet again i guess")
-//            annotationView.isEnabled = true
-//            annotationView.canShowCallout = true
-//
-//            let btn = UIButton(type: .detailDisclosure)
-//            annotationView.rightCalloutAccessoryView = btn
-//            return annotationView
-//        }
-//    }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView)
     {
