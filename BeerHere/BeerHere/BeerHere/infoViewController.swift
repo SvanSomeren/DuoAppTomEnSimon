@@ -19,6 +19,12 @@ class infoViewController: UIViewController {
     @IBOutlet var websitebutton: UIButton!
     @IBOutlet var startroutebutton: UIButton!
     
+    @IBAction func websitebutton(_ sender: Any) {
+        if let url = NSURL(string:website){
+            UIApplication.shared.openURL(url as URL)
+        }
+    }
+    
     var name = String();
     var beer = String();
     var price = String();
