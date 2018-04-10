@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		83041772206CE41B009EE2EC /* LocationSearchTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83041771206CE41B009EE2EC /* LocationSearchTable.swift */; };
+		833E4862207CF6140017AB11 /* LocationApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833E4861207CF6140017AB11 /* LocationApi.swift */; };
 		83492EC82064EF530054FC8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83492EC72064EF530054FC8F /* AppDelegate.swift */; };
 		83492ECA2064EF530054FC8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83492EC92064EF530054FC8F /* ViewController.swift */; };
 		83492ECD2064EF530054FC8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83492ECB2064EF530054FC8F /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		83041771206CE41B009EE2EC /* LocationSearchTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchTable.swift; sourceTree = "<group>"; };
+		833E4861207CF6140017AB11 /* LocationApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationApi.swift; sourceTree = "<group>"; };
 		83492EC42064EF530054FC8F /* BeerHere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerHere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83492EC72064EF530054FC8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83492EC92064EF530054FC8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				83492ED02064EF530054FC8F /* LaunchScreen.storyboard */,
 				83492ED32064EF530054FC8F /* Info.plist */,
 				83041771206CE41B009EE2EC /* LocationSearchTable.swift */,
+				833E4861207CF6140017AB11 /* LocationApi.swift */,
 			);
 			path = BeerHere;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				F5A6E8452064F7860003BF23 /* infoViewController.swift in Sources */,
 				F5A6E8412064F75E0003BF23 /* searchViewController.swift in Sources */,
 				F5A6E8432064F7720003BF23 /* mapViewController.swift in Sources */,
+				833E4862207CF6140017AB11 /* LocationApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

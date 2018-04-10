@@ -12,6 +12,7 @@ class Bar{
     var name : String?;
     var lat : Double?;
     var long : Double?;
+    var website: String?;
     var openingTime : String?;
     var closingTime : String?;
     var popularBeer : String?;

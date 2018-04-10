@@ -16,6 +16,7 @@ class mapViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDe
     let locationManager = CLLocationManager()
     var bars = [Bar]();
     var selectedBar = Bar();
+    let userLoc = MKPointAnnotation();
     var locationSearchTable: LocationSearchTable? = nil
     
     var resultSearchController:UISearchController? = nil
@@ -44,23 +45,16 @@ class mapViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDe
         self.mapView.delegate = self
         self.mapView.showsUserLocation = true;
         
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        
+        LocationApi.setup(self)
+        userLoc.coordinate = LocationApi.getCurrentLocation().coordinate
+        userLoc.title = "You"
+        mapView.addAnnotation(userLoc)
+        mapView.setRegion(MKCoordinateRegionMakeWithDistance(userLoc.coordinate, CLLocationDistance(7000), CLLocationDistance(7000)), animated: true)
+
         loadJsonData();
     }
     
-    //user position
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        let location = locations.last as! CLLocation
-        print(" location updated ");
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        
-        self.mapView.setRegion(region, animated: true)
-    }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -78,6 +72,7 @@ class mapViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDe
                 }
             }
         }
+        showRouteOnMap(pickupCoordinate: userLoc.coordinate, destinationCoordinate: (view.annotation?.coordinate)!)
         performSegue(withIdentifier: "infoSegue", sender: nil)
     }
     
@@ -139,6 +134,9 @@ class mapViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDe
                 if let popularBeer = jsonDict["popularbeer"] as? String{
                     newBar.popularBeer = popularBeer
                 }
+                if let website = jsonDict["website"] as? String{
+                    newBar.website = website
+                }
                 print(newBar.name!);
                 bars.append(newBar);
             }
@@ -158,6 +156,62 @@ class mapViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDe
         DestScreen.beer = selectedBar.popularBeer!;
         DestScreen.opentime = selectedBar.openingTime!;
         DestScreen.closetime = selectedBar.closingTime!;
+        DestScreen.website = selectedBar.website!;
+    }
+    
+    func showRouteOnMap(pickupCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D) {
+        let sourcePlacemark = MKPlacemark(coordinate: pickupCoordinate, addressDictionary: nil)
+        let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinate, addressDictionary: nil)
+    
+        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+    
+        let sourceAnnotation = MKPointAnnotation()
+    
+        if let location = sourcePlacemark.location {
+            sourceAnnotation.coordinate = location.coordinate
+        }
+    
+        let destinationAnnotation = MKPointAnnotation()
+    
+        if let location = destinationPlacemark.location {
+            destinationAnnotation.coordinate = location.coordinate
+        }
+    
+        self.mapView.showAnnotations([sourceAnnotation,destinationAnnotation], animated: true )
+    
+        let directionRequest = MKDirectionsRequest()
+        directionRequest.source = sourceMapItem
+        directionRequest.destination = destinationMapItem
+        directionRequest.transportType = .automobile
+        
+    // Calculate the direction
+        let directions = MKDirections(request: directionRequest)
+        
+        directions.calculate {
+            (response, error) -> Void in guard let response = response else {
+                if let error = error {
+                    print("Error: \(error)")
+                }
+                return
+        }
+    
+            let route = response.routes[0]
+            self.mapView.add((route.polyline), level: MKOverlayLevel.aboveRoads)
+            let rect = route.polyline.boundingMapRect
+            self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        
+        renderer.strokeColor = UIColor(red: 17.0/255.0, green: 147.0/255.0, blue: 255.0/255.0, alpha: 1)
+        
+        renderer.lineWidth = 5.0
+        
+        return renderer
     }
     
     /*
