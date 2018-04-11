@@ -65,5 +65,12 @@ extension LocationSearchTable : UISearchResultsUpdating {
                 mapView?.addAnnotation(annotation);
             }
         }
+        let userLoc = MKPointAnnotation()
+        userLoc.coordinate = LocationApi.getCurrentLocation().coordinate
+        userLoc.title = "You"
+        mapView?.addAnnotation(userLoc)
+        mapView?.setRegion(MKCoordinateRegionMakeWithDistance(userLoc.coordinate, CLLocationDistance(7000), CLLocationDistance(7000)), animated: true)
+        let overlays = mapView?.overlays
+        mapView?.removeOverlays(overlays!)
     }
 }

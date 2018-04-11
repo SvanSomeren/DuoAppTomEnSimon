@@ -72,6 +72,8 @@ class mapViewController: UIViewController,MKMapViewDelegate, CLLocationManagerDe
                 }
             }
         }
+        let overlays = mapView.overlays
+        mapView.removeOverlays(overlays)
         showRouteOnMap(pickupCoordinate: userLoc.coordinate, destinationCoordinate: (view.annotation?.coordinate)!)
         performSegue(withIdentifier: "infoSegue", sender: nil)
     }
