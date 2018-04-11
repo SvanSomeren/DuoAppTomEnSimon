@@ -39,7 +39,6 @@ class LocationSearchTable : UITableViewController {
 
 extension LocationSearchTable : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        //look for text in the api call, then show markers for the ones where the search = api result
         resultBars.removeAll();
         let stringValue = search?.text;
         for bar in bars!{
